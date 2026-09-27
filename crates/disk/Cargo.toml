@@ -1,0 +1,7 @@
+[package]
+name = "reposhelf-disk"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+[dependencies]
+reposhelf-core = { path = "../core" }

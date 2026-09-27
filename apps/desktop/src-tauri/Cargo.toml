@@ -1,0 +1,11 @@
+[package]
+name = "reposhelf-desktop"
+version = "0.1.0"
+edition = "2021"
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+[dependencies]
+tauri = { version = "2", features = [] }
+reposhelf-core = { path = "../../../crates/core" }
+reposhelf-platform = { path = "../../../crates/platform" }
+serde = { version = "1", features = ["derive"] }
