@@ -148,11 +148,11 @@ fn print_repo(r: &RepoInfo) {
         "{}\n  {}\n  {} | {} | ↑{} ↓{} | {}\n  {}",
         safe(&r.name),
         safe(&r.path.display().to_string()),
-        r.branch.as_deref().unwrap_or(if r.detached_head {
+        safe(r.branch.as_deref().unwrap_or(if r.detached_head {
             "detached HEAD"
         } else {
             "bare"
-        }),
+        })),
         if r.dirty {
             format!(
                 "Dirty: {} modified, {} untracked",

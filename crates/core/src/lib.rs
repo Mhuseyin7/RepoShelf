@@ -212,7 +212,7 @@ fn changes(repo: &Repository) -> Result<ChangeCounts> {
         if x.intersects(Status::WT_MODIFIED | Status::INDEX_MODIFIED) {
             c.modified += 1;
         }
-        if x.intersects(Status::WT_NEW | Status::INDEX_NEW) {
+        if x.contains(Status::INDEX_NEW) {
             c.added += 1;
         }
         if x.intersects(Status::WT_DELETED | Status::INDEX_DELETED) {
@@ -363,6 +363,7 @@ mod tests {
         let info = inspect(&repo_path).unwrap();
         assert!(info.dirty);
         assert_eq!(info.changes.untracked, 1);
+        assert_eq!(info.changes.added, 0);
         assert_eq!(info.name, "project");
         fs::remove_dir_all(root).unwrap();
     }
